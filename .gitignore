@@ -1,0 +1,9 @@
+/.idea/
+/.bundle/
+/coverage/
+
+Gemfile.lock
+.ruby-version
+.tool-versions
+
+*.gem
