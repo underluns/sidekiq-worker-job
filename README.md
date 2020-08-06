@@ -1,12 +1,12 @@
-# Template
-Template for ruby gem.
+# Sidekiq::Worker::Job
+Allows you to get [job attributes](https://github.com/mperham/sidekiq/wiki/Job-Format) inside the worker.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'template'
+gem 'sidekiq-worker-job'
 ```
 
 And then execute:
@@ -15,11 +15,24 @@ And then execute:
 
 Or install it yourself as:
 
-    gem install template
+    gem install sidekiq-worker-job
 
 ## Usage
 
-TODO: Write usage instructions here
+To access the [job attributes](https://github.com/mperham/sidekiq/wiki/Job-Format), it is enough to call the corresponding methods.
+
+```ruby
+class MyWorker
+  include Sidekiq::Worker
+  
+  def perform
+    job.id
+    job.args
+    job.created_at
+    job.enqueued_at
+  end
+end
+```
 
 ## Development and Testing
 
@@ -47,7 +60,7 @@ All checks are run with the following command:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on [GitHub](https://github.com/andxors/gem-template).
+Bug reports and pull requests are welcome on [GitHub](https://github.com/andxors/sidekiq-worker-job).
 
 ## License
 

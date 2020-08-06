@@ -1,3 +1,7 @@
 inherit_gem:
   rubocops:
     - 'config/default.yml'
+
+Naming/FileName:
+  Exclude:
+    - lib/sidekiq-worker-job.rb

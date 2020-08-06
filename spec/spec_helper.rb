@@ -4,4 +4,4 @@ SimpleCov.start do
 end
 
 require 'rspec'
-require 'template'
+require 'sidekiq-worker-job'

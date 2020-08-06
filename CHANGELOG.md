@@ -1,5 +1,5 @@
 # Change Log
 
-## 0.0.0 (YYYY-MM-DD)
+## 0.0.1 (2020-08-06)
 
   * Gem initialization.
