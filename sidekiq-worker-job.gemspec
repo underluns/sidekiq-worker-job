@@ -19,5 +19,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec',         '~> 3.9'
   spec.add_development_dependency 'rubocops',      '~> 0.1'
   spec.add_development_dependency 'simplecov',     '~> 0.18'
-  spec.add_runtime_dependency 'sidekiq', '~> 6.0'
+  spec.add_runtime_dependency 'sidekiq', '~> 5.2'
 end

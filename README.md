@@ -26,6 +26,7 @@ class MyWorker
   include Sidekiq::Worker
   
   def perform
+    job.queue
     job.id
     job.args
     job.created_at
