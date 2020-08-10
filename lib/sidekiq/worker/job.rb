@@ -13,14 +13,24 @@ module Sidekiq
       # @attr_reader enqueued_at [Integer]
       attr_reader :worker_name, :queue_name, :id, :args, :created_at, :enqueued_at
 
-      # @param attributes [Hash] the full job payload (https://github.com/mperham/sidekiq/wiki/Job-Format).
-      def initialize(attributes)
-        @worker_name = attributes.fetch('class')
-        @queue_name  = attributes.fetch('queue')
-        @id          = attributes.fetch('jid')
-        @args        = attributes.fetch('args')
-        @created_at  = attributes.fetch('created_at')
-        @enqueued_at = attributes.fetch('enqueued_at')
+      # @param worker_name [String]
+      # @param queue_name  [String]
+      # @param id          [String]
+      # @param args        [Array]
+      # @param created_at  [Integer]
+      # @param enqueued_at [Integer]
+      def initialize(worker_name:, queue_name:, id:, args:, created_at:, enqueued_at:)
+        @worker_name = worker_name
+        @queue_name  = queue_name
+        @id          = id
+        @args        = args
+        @created_at  = created_at
+        @enqueued_at = enqueued_at
+      end
+
+      # @return [Sidekiq::Queue]
+      def queue
+        @queue ||= Sidekiq::Queue.new(*queue_name)
       end
     end
   end
