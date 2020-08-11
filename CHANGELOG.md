@@ -2,6 +2,7 @@
 
 ## X.Y.Z (YYYY-MM-DD)
 
+  * Add method for getting jobs from the queue.
   * Add method for creating a job from a hash.
 
 ## 0.1.0 (2020-08-10)
