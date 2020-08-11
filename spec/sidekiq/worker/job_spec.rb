@@ -90,6 +90,43 @@ describe Sidekiq::Worker::Job do
     end
   end
 
+  describe '.list_from_queue' do
+    let(:worker) do
+      Class.new { include Sidekiq::Worker }
+    end
+
+    before do
+      Sidekiq::Queue.all.each(&:clear)
+    end
+
+    context 'when there are jobs in the queue' do
+      before do
+        worker.set(queue: 'queue').perform_async
+      end
+
+      it 'returns a non-empty array' do
+        expect(described_class.list_from_queue('queue')).not_to eq([])
+      end
+
+      it 'returns jobs' do
+        expect(described_class.list_from_queue('queue')).to all have_attributes(
+          class:      described_class,
+          queue_name: 'queue'
+        )
+      end
+    end
+
+    context 'when there are no jobs in the queue' do
+      before do
+        worker.perform_async
+      end
+
+      it 'returns an empty array' do
+        expect(described_class.list_from_queue('queue')).to eq([])
+      end
+    end
+  end
+
   describe '#queue' do
     let(:job) { described_class.new(**attributes) }
     let(:attributes) do

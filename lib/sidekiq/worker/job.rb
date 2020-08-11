@@ -14,7 +14,8 @@ module Sidekiq
       attr_reader :worker_name, :queue_name, :id, :args, :created_at, :enqueued_at
 
       class << self
-        # @param attributes [Hash]
+        # @param attributes [Hash] the full job payload (https://github.com/mperham/sidekiq/wiki/Job-Format).
+        # @return [Sidekiq::Worker::Job]
         def new_from_payload(attributes)
           new(
             worker_name: attributes.fetch('class'),
@@ -24,6 +25,12 @@ module Sidekiq
             created_at:  attributes.fetch('created_at'),
             enqueued_at: attributes.fetch('enqueued_at')
           )
+        end
+
+        # @param queue_name [String] the name of the queue from which jobs are loaded.
+        # @return [Array<Sidekiq::Worker::Job>] an array of jobs in the queue.
+        def list_from_queue(queue_name = nil)
+          Sidekiq::Queue.new(*queue_name).map(&:item).map(&method(:new_from_payload))
         end
       end
 
