@@ -32,6 +32,14 @@ module Sidekiq
         def list_from_queue(queue_name = nil)
           Sidekiq::Queue.new(*queue_name).map(&:item).map(&method(:new_from_payload))
         end
+
+        # @param queue_name [String] the name of the queue from which jobs are loaded.
+        # @return [Array<Sidekiq::Worker::Job>] an array of jobs in workers.
+        def list_from_workers(queue_name = nil)
+          queue   = Sidekiq::Queue.new(*queue_name)
+          workers = Sidekiq::Workers.new.select { |_process_id, _thread_id, work| work.fetch('queue') == queue.name }
+          workers.map { |_process_id, _thread_id, work| work.fetch('payload') }.map(&method(:new_from_payload))
+        end
       end
 
       # @param worker_name [String]
