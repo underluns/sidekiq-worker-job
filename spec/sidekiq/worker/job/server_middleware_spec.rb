@@ -92,8 +92,12 @@ describe Sidekiq::Worker::Job::ServerMiddleware do
         job.delete('enqueued_at')
       end
 
-      it 'raises an error' do
-        expect { middleware.call(worker, job, queue) {} }.to raise_error(KeyError, 'key not found: "enqueued_at"')
+      it 'sets parameter enqueued_at to nil' do
+        middleware.call(worker, job, queue) {}
+
+        expect(worker.job).to have_attributes(
+          enqueued_at: nil
+        )
       end
     end
   end

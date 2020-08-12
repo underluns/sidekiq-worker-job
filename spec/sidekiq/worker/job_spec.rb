@@ -1,7 +1,7 @@
 describe Sidekiq::Worker::Job do
   describe '.version' do
     it 'has a version number' do
-      expect(described_class::VERSION).to eq('0.1.0')
+      expect(described_class::VERSION).to eq('0.2.0')
     end
   end
 
@@ -84,8 +84,10 @@ describe Sidekiq::Worker::Job do
         attributes.delete('enqueued_at')
       end
 
-      it 'raises an error' do
-        expect { described_class.new_from_payload(attributes) }.to raise_error(KeyError, 'key not found: "enqueued_at"')
+      it 'sets parameter enqueued_at to nil' do
+        expect(described_class.new_from_payload(attributes)).to have_attributes(
+          enqueued_at: nil
+        )
       end
     end
   end
