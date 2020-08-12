@@ -23,7 +23,7 @@ module Sidekiq
             id:          attributes.fetch('jid'),
             args:        attributes.fetch('args'),
             created_at:  attributes.fetch('created_at'),
-            enqueued_at: attributes.fetch('enqueued_at')
+            enqueued_at: attributes.fetch('enqueued_at', nil)
           )
         end
 

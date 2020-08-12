@@ -1,6 +1,6 @@
 # Change Log
 
-## X.Y.Z (YYYY-MM-DD)
+## 0.2.0 (2020-08-12)
 
   * Add methods for getting jobs from workers.
   * Add method for getting jobs from the queue.
