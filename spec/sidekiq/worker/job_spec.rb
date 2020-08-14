@@ -1,7 +1,7 @@
 describe Sidekiq::Worker::Job do
   describe '.version' do
     it 'has a version number' do
-      expect(described_class::VERSION).to eq('0.2.0')
+      expect(described_class::VERSION).to eq('0.2.1')
     end
   end
 
@@ -92,7 +92,7 @@ describe Sidekiq::Worker::Job do
     end
   end
 
-  describe '.list_from_queue' do
+  describe '.list_from_queues' do
     let(:worker) do
       Class.new { include Sidekiq::Worker }
     end
@@ -107,11 +107,11 @@ describe Sidekiq::Worker::Job do
       end
 
       it 'returns a non-empty array' do
-        expect(described_class.list_from_queue('queue')).not_to eq([])
+        expect(described_class.list_from_queues).not_to eq([])
       end
 
       it 'returns jobs' do
-        expect(described_class.list_from_queue('queue')).to all have_attributes(
+        expect(described_class.list_from_queues).to all have_attributes(
           class:      described_class,
           queue_name: 'queue'
         )
@@ -119,32 +119,16 @@ describe Sidekiq::Worker::Job do
     end
 
     context 'when there are no jobs in the queue' do
-      before do
-        worker.perform_async
-      end
-
       it 'returns an empty array' do
-        expect(described_class.list_from_queue('queue')).to eq([])
+        expect(described_class.list_from_queues).to eq([])
       end
     end
   end
 
   describe '.list_from_workers' do
-    let(:worker) do
-      Class.new { include Sidekiq::Worker }
-    end
-
-    before do
-      Sidekiq::Queue.all.each(&:clear)
-    end
-
     context 'when there are no jobs in workers' do
-      before do
-        worker.perform_async
-      end
-
       it 'returns an empty array' do
-        expect(described_class.list_from_workers('queue')).to eq([])
+        expect(described_class.list_from_workers).to eq([])
       end
     end
   end

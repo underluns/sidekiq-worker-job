@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.1 (2020-08-14)
+
+  * Rename methods.
+  * Initialize parameters are optional.
+  * Upgrade ruby version.
+
 ## 0.2.0 (2020-08-12)
 
   * Add methods for getting jobs from workers.
