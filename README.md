@@ -35,16 +35,16 @@ class MyWorker
 end
 ```
 
-Getting a list of jobs from the queue.
+Getting a list of jobs from queues.
 
 ```ruby
-Sidekiq::Worker::Job.list_from_queue('default') # => Array<Sidekiq::Worker::Job>
+Sidekiq::Worker::Job.list_from_queues # => Array<Sidekiq::Worker::Job>
 ```
 
-Getting a list of jobs from the workers.
+Getting a list of jobs from workers.
 
 ```ruby
-Sidekiq::Worker::Job.list_from_workers('default') # => Array<Sidekiq::Worker::Job>
+Sidekiq::Worker::Job.list_from_workers # => Array<Sidekiq::Worker::Job>
 ```
 
 ## Development and Testing

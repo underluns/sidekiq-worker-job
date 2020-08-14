@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.files         = Dir['lib/**/*.rb', 'bin/*', '[A-Z]*']
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '~> 2.4'
+  spec.required_ruby_version = '~> 2.7'
   spec.add_development_dependency 'bundler',       '~> 2.1'
   spec.add_development_dependency 'bundler-audit', '~> 0.7'
   spec.add_development_dependency 'rspec',         '~> 3.9'

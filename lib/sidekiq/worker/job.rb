@@ -27,18 +27,14 @@ module Sidekiq
           )
         end
 
-        # @param queue_name [String] the name of the queue from which jobs are loaded.
-        # @return [Array<Sidekiq::Worker::Job>] an array of jobs in the queue.
-        def list_from_queue(queue_name = nil)
-          Sidekiq::Queue.new(*queue_name).map(&:item).map(&method(:new_from_payload))
+        # @return [Array<Sidekiq::Worker::Job>] an array of jobs in queues.
+        def list_from_queues
+          Sidekiq::Queue.all.map(&:to_a).flatten.map(&:item).map(&method(:new_from_payload))
         end
 
-        # @param queue_name [String] the name of the queue from which jobs are loaded.
         # @return [Array<Sidekiq::Worker::Job>] an array of jobs in workers.
-        def list_from_workers(queue_name = nil)
-          queue   = Sidekiq::Queue.new(*queue_name)
-          workers = Sidekiq::Workers.new.select { |_process_id, _thread_id, work| work.fetch('queue') == queue.name }
-          workers.map { |_process_id, _thread_id, work| work.fetch('payload') }.map(&method(:new_from_payload))
+        def list_from_workers
+          Sidekiq::Workers.new.to_a.map(&:last).map(&OpenStruct.method(:new)).map(&:payload).map(&method(:new_from_payload))
         end
       end
 
@@ -48,7 +44,7 @@ module Sidekiq
       # @param args        [Array]
       # @param created_at  [Float]
       # @param enqueued_at [Float]
-      def initialize(worker_name:, queue_name:, id:, args:, created_at:, enqueued_at:)
+      def initialize(worker_name: nil, queue_name: nil, id: nil, args: nil, created_at: nil, enqueued_at: nil)
         @worker_name = worker_name
         @queue_name  = queue_name
         @id          = id
