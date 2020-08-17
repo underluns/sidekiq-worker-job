@@ -32,18 +32,6 @@ class MyWorker
 end
 ```
 
-Getting a list of jobs from queues.
-
-```ruby
-Sidekiq::Worker::Job.list_from_queues # => Array<Sidekiq::Job>
-```
-
-Getting a list of jobs from workers.
-
-```ruby
-Sidekiq::Worker::Job.list_from_workers # => Array<Sidekiq::Job>
-```
-
 ## Development and Testing
 
 To start the interactive development console, use the command:
