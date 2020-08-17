@@ -26,11 +26,8 @@ class MyWorker
   include Sidekiq::Worker
   
   def perform
-    job.queue
-    job.id
-    job.args
-    job.created_at
-    job.enqueued_at
+    job      # => Sidekiq::Job
+    job.item # => Hash (https://github.com/mperham/sidekiq/wiki/Job-Format)
   end
 end
 ```
@@ -38,13 +35,13 @@ end
 Getting a list of jobs from queues.
 
 ```ruby
-Sidekiq::Worker::Job.list_from_queues # => Array<Sidekiq::Worker::Job>
+Sidekiq::Worker::Job.list_from_queues # => Array<Sidekiq::Job>
 ```
 
 Getting a list of jobs from workers.
 
 ```ruby
-Sidekiq::Worker::Job.list_from_workers # => Array<Sidekiq::Worker::Job>
+Sidekiq::Worker::Job.list_from_workers # => Array<Sidekiq::Job>
 ```
 
 ## Development and Testing

@@ -1,6 +1,6 @@
 module Sidekiq
   module Worker
-    class Job
+    module Job
       class ServerMiddleware
         # @param worker [Object] the worker instance.
         # @param job    [Hash]   the full job payload (https://github.com/mperham/sidekiq/wiki/Job-Format).
