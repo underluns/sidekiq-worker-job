@@ -1,7 +1,7 @@
 module Sidekiq
   module Worker
     module Job
-      VERSION = '0.2.1'.freeze
+      VERSION = '0.3.0'.freeze
     end
   end
 end
