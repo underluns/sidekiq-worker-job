@@ -1,8 +1,8 @@
 module Sidekiq
   module Worker
-    class Job
+    module Job
       module Extension
-        # @attr_accessor job [Sidekiq::Worker::Job]
+        # @attr_accessor job [Sidekiq::Job]
         attr_accessor :job
       end
     end

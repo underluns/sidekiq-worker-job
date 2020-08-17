@@ -1,5 +1,9 @@
 # Change Log
 
+## X.Y.Z (YYYY-MM-DD)
+
+  * Use Sidekiq::Job class instead of Sidekiq::Worker::Job class
+
 ## 0.2.1 (2020-08-14)
 
   * Rename methods.
