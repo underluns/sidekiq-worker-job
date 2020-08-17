@@ -2,7 +2,8 @@
 
 ## X.Y.Z (YYYY-MM-DD)
 
-  * Use Sidekiq::Job class instead of Sidekiq::Worker::Job class
+  * Remove class methods.
+  * Use Sidekiq::Job instead of Sidekiq::Worker::Job.
 
 ## 0.2.1 (2020-08-14)
 

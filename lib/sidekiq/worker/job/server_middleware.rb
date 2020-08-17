@@ -4,9 +4,10 @@ module Sidekiq
       class ServerMiddleware
         # @param worker [Object] the worker instance.
         # @param job    [Hash]   the full job payload (https://github.com/mperham/sidekiq/wiki/Job-Format).
-        # @param _queue [String] the name of the queue the job was pulled from.
-        def call(worker, job, _queue)
-          worker.job = Sidekiq::Worker::Job.new_from_payload(job)
+        # @param queue  [String] the name of the queue the job was pulled from.
+        def call(worker, job, queue)
+          worker.job = Sidekiq::Job.new(job, queue)
+
           yield
         end
       end
