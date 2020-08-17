@@ -1,6 +1,6 @@
 # Change Log
 
-## X.Y.Z (YYYY-MM-DD)
+## 0.3.0 (2020-08-17)
 
   * Remove class methods.
   * Use Sidekiq::Job instead of Sidekiq::Worker::Job.
