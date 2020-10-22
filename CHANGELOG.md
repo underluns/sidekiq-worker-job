@@ -1,6 +1,6 @@
 # Change Log
 
-## X.Y.Z (YYYY-MM-DD)
+## 0.4.0 (2020-10-22)
 
   * Upgrade sidekiq version.
 
