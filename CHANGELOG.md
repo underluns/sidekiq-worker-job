@@ -1,5 +1,9 @@
 # Change Log
 
+## X.Y.Z (YYYY-MM-DD)
+
+  * Upgrade sidekiq version.
+
 ## 0.3.0 (2020-08-17)
 
   * Remove class methods.
