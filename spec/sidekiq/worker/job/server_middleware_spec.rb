@@ -19,13 +19,13 @@ describe Sidekiq::Worker::Job::ServerMiddleware do
     end
 
     it 'sets the job parameter' do
-      middleware.call(worker, job, queue) {}
+      middleware.call(worker, job, queue) { nil }
 
       expect(worker.job).to be_instance_of(Sidekiq::Job)
     end
 
     it 'sets attributes to the job' do
-      middleware.call(worker, job, queue) {}
+      middleware.call(worker, job, queue) { nil }
 
       expect(worker.job).to have_attributes(
         klass:       'SomeWorker',

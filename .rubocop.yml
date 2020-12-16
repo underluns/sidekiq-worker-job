@@ -1,7 +1,31 @@
-inherit_gem:
-  rubocops:
-    - 'config/default.yml'
+require:
+  - 'rubocop-performance'
+  - 'rubocop-rspec'
+
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable
 
 Naming/FileName:
   Exclude:
-    - lib/sidekiq-worker-job.rb
+    - 'lib/sidekiq-worker-job.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle:      table
+
+RSpec/ExampleLength:
+  Max: 10

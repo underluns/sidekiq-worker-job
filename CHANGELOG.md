@@ -1,5 +1,9 @@
 # Change Log
 
+## X.Y.Z (YYYY-MM-DD)
+
+  * Remove rubocops from dependencies.
+
 ## 0.4.0 (2020-10-22)
 
   * Upgrade sidekiq version.
