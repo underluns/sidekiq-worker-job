@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Attributes of sidekiq worker'
   spec.description   = 'Allows you to get job attributes inside the sidekiq worker'
   spec.authors       = ['Andrey Lun\'s']
-  spec.email         = ['andxors@gmail.com']
-  spec.homepage      = 'https://github.com/andxors/sidekiq-worker-job'
+  spec.email         = ['underluns@gmail.com']
+  spec.homepage      = 'https://github.com/underluns/sidekiq-worker-job'
   spec.license       = 'MIT'
 
   spec.files         = Dir['lib/**/*.rb', 'bin/*', '[A-Z]*']

@@ -58,7 +58,7 @@ All checks are run with the following command:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on [GitHub](https://github.com/andxors/sidekiq-worker-job).
+Bug reports and pull requests are welcome on [GitHub](https://github.com/underluns/sidekiq-worker-job).
 
 ## License
 
