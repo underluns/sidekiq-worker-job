@@ -1,6 +1,6 @@
 # Change Log
 
-## X.Y.Z (YYYY-MM-DD)
+## 0.4.1 (2020-12-21)
 
   * Remove rubocops from dependencies.
 
