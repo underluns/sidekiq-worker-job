@@ -1,6 +1,6 @@
 # Change Log
 
-## X.Y.Z (YYYY-MM-DD)
+## 0.4.2 (2021-01-11)
 
   * Update dependencies.
 
